@@ -6,8 +6,8 @@ import sys
 pygame.init()
 
 #screen variables
-screenX = 800
-screenY = 600
+screenX = 1000
+screenY = 800
 screen = pygame.display.set_mode((screenX, screenY))
 
 #variables
@@ -32,9 +32,9 @@ class Ball1:
     self.img = images['ball1']
 
     self.posCopyX = 150
-    self.posCopyY = 300
+    self.posCopyY = 400
 
-    self.var = 1
+    self.var = 0.25
     self.collide = 0
 
     self.mass = 1
@@ -48,7 +48,7 @@ class Ball1:
     self.width = self.img.get_width() /2
     self.height = self.img.get_height() /2
     self.posX = 150 - self.width + self.velocity - self.collide
-    self.posY = 300 - self.height
+    self.posY = 400 - self.height
 
     self.rect = pygame.Rect(self.posX, self.posY, self.img.get_width(),self.img.get_height())
     screen.blit(self.img,(self.posX,self.posY))
@@ -61,8 +61,8 @@ class Ball2:
 
     self.img = images['ball2']
 
-    self.posCopyX = 650
-    self.posCopyY = 300
+    self.posCopyX = 850
+    self.posCopyY = 400
 
     self.collide = 0
     self.var = 6
@@ -77,8 +77,8 @@ class Ball2:
 
     self.width = self.img.get_width() /2
     self.height = self.img.get_height() /2
-    self.posX = 650 - self.width - self.velocity + self.collide
-    self.posY = 300 - self.height
+    self.posX = 850 - self.width - self.velocity + self.collide
+    self.posY = 400 - self.height
 
     self.rect = pygame.Rect(self.posX, self.posY, self.img.get_width(),self.img.get_height())
     screen.blit(self.img,(self.posX,self.posY))
@@ -98,6 +98,8 @@ def collision(rect,rect2):
 #defining icon and title
 pygame.display.set_caption('Gravitation Simulation Big')
 pygame.display.set_icon(images['icon'])
+
+images['bg'] = pygame.transform.scale(images['bg'],(screenX,screenY))
 
 #creating objects
 ballOne = Ball1()
